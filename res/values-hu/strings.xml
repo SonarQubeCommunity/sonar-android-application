@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SonarQube</string>
+    <string name="emptyList">A lista üres</string>
+
+    <!-- tabbar -->
+    <string name="favourites">kedvencek</string>
+    <string name="projects">projektek</string>
+    <string name="users">felhasználók</string>
+    <string name="plugins">kiegészítők</string>
+
+    <!-- menu -->
+    <string name="serverManagement">Szerver menedzsment</string>
+    <string name="addNewServer">Új szerver hozzáadása</string>
+    <string name="listServers">Szerverek listázása</string>
+    <string name="addPublicServers">Publikus szerverek hozzáadása</string>
+    <string name="extra">Extra</string>
+    <string name="sharing">Megosztás</string>
+    <string name="rating">Értékelés</string>
+    <string name="donation">Támogatás</string>
+
+    <string name="search">keresés</string>
+    <string name="refresh">frissítés</string>
+    <string name="settings">beállítások</string>
+
+
+    <!-- add new server -->
+    <string name="serverURL">Szerver URL</string>
+    <string name="displayName">Megjelenített név</string>
+    <string name="username">Felhasználónév</string>
+    <string name="password">Jelszó</string>
+    <string name="save">mentés</string>
+    <string name="testConnection">kapcsolat tesztelése</string>
+    <string name="serverURLIsRequired">A szerver URL-t kötelező megadni!</string>
+    <string name="serverMustStartsWith">A szerver url-nek a http:// vagy a https:// előtaggal kell kezdődnie</string>
+    <string name="serverMustNotEndsWith">Server URL nem végződhet / karakterrel</string>
+    <string name="displayNameIsRequired">A megjelenített nevet kötelező megadni!</string>
+    <string name="displayNameMustBeLessThan">A megjelenített név nem lehet hosszabb 18 karakternél!</string>
+    <string name="displayNameMustBeUnique">A megjelenített névnek egyedinek kell lennie!</string>
+    <string name="theServerIsSuccessfullySaved">A szerver sikeresen el lett mentve!</string>
+
+    <!-- list servers -->
+    <string name="theServerIsSuccessfullyDeleted">A szerver sikeresen eltávolításra került</string>
+    <string name="select">kiválasztás</string>
+    <string name="delete">törlés</string>
+
+
+    <!-- add public servers -->
+    <string name="ThePublicServersAreSuccessfullyAdded">A publikus szerverek sikeresen hozzáadásra kerültek</string>
+    <string name="add">hozzáadás</string>
+
+    <!-- rating -->
+    <string name="ifYouEnjoy">Ha hasznosnak találtad a SonarQube android alkalmazást, kérlek szánj egy percet az értékelésre.\n\nKöszönöm!</string>
+    <string name="rateSonarQubeApp">Értekelem az alkalmazást</string>
+    <string name="remindMeLater">Emlékeztess rá később</string>
+    <string name="noThanks">Nem, köszi</string>
+
+    <!-- donation -->
+    <string name="donate">támogatás</string>
+    <string name="pleaseSpend">Ha van rá lehetőséged, kérlek támogasd a SonarQube android alkalmazás fejlesztését.\n\nKöszönöm!</string>
+
+    <!-- sharing -->
+    <string name="sharedText">Próbáld ki a SonarQube android alkalmazást!</string>
+
+
+   <!-- network util -->
+   <string name="loading">Adatok letöltése</string>
+   <string name="pleaseWait">Kérem várjon...</string>
+   <string name="networkStatus">Hálózati állapot</string>
+   <string name="yourDevice">A készüléked nincs a hálózathoz csatlakoztatva!</string>
+   <string name="notConnectedAndTryToRefresh">A készüléked nincs a hálózathoz csatlakoztatva!\nA kapcsolódás után, nyomj a frissítés ikonra.</string>
+
+  <!-- Layout -->
+   <string name="activeMember">aktív</string>
+   <string name="inactiveMember">inaktív</string>
+   <string name="web">web</string>
+
+
+</resources>

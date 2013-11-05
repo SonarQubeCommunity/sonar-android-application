@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2011 The Android Open Source Project
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+ 
+
+    <style name="Theme.Sonarqubeactionbarstyle" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_sonarqubeactionbarstyle</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Sonarqubeactionbarstyle</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Sonarqubeactionbarstyle</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Sonarqubeactionbarstyle</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Sonarqubeactionbarstyle</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Sonarqubeactionbarstyle</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_sonarqubeactionbarstyle</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_sonarqubeactionbarstyle</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Sonarqubeactionbarstyle</item>
+        
+                <!-- Light.DarkActionBar specific -->
+        <item name="android:actionBarWidgetTheme">@style/Theme.Sonarqubeactionbarstyle.Widget</item>		
+    	<item name="android:icon">@drawable/logo</item>    	    	
+    </style>
+
+    <style name="ActionBar.Solid.Sonarqubeactionbarstyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_sonarqubeactionbarstyle</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_sonarqubeactionbarstyle</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_sonarqubeactionbarstyle</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Sonarqubeactionbarstyle</item>
+        <item name="android:titleTextStyle">@style/TitleTextStyle</item>
+        <item name="android:displayOptions">useLogo|showHome</item>
+
+    </style>
+
+    <style name="ActionBar.Transparent.Sonarqubeactionbarstyle" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_sonarqubeactionbarstyle</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Sonarqubeactionbarstyle</item>
+        
+        
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Sonarqubeactionbarstyle.Widget" parent="@style/Theme.AppCompat">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Sonarqubeactionbarstyle</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Sonarqubeactionbarstyle</item>
+        
+        
+    </style>
+    
+    
+    <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">0dp</item>
+        <item name="android:textColor">#FFFFFF</item>                 
+    </style>
+    
+</resources>

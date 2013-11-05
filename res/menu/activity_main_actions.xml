@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu 
+    xmlns:android="http://schemas.android.com/apk/res/android"   
+    xmlns:sonarqube="http://schemas.android.com/apk/res-auto" >
+
+    <!-- 
+    <item android:id="@+id/action_settings"
+          android:icon="@drawable/sonarqube_settings"
+          android:title="@string/settings"          
+		  sonarqube:showAsAction="ifRoom"/>    
+     
+	-->
+     <item android:id="@+id/action_search" 
+          android:icon="@drawable/white_search"
+          android:title="@string/search"                   
+		  sonarqube:showAsAction="ifRoom|collapseActionView"
+		  sonarqube:actionViewClass="android.support.v7.widget.SearchView" />    
+ 	
+     
+    <item android:id="@+id/action_refresh"
+          android:icon="@drawable/white_refresh"
+          android:title="@string/refresh"          
+		  sonarqube:showAsAction="ifRoom"/>    
+     -->     
+</menu>
