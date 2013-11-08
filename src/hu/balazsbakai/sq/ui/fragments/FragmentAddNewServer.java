@@ -20,7 +20,6 @@
 
 package hu.balazsbakai.sq.ui.fragments;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -51,7 +50,6 @@ import hu.balazsbakai.sq.util.LogUtil;
 import hu.balazsbakai.sq.util.NetworkUtil;
 import hu.balazsbakai.sq.util.UsedServersUtil;
 
-@SuppressLint("HandlerLeak")
 public class FragmentAddNewServer extends Fragment implements OnClickListener {
 
   private Button buttonAddNewServer;
@@ -151,8 +149,8 @@ public class FragmentAddNewServer extends Fragment implements OnClickListener {
 
       CommonUtil.hideKeyBoard(getActivity());
       try {
-        UsedServersUtil.saveNewServer(getActivity(), serverURL.getText().toString(), displayName.getText().toString(), userName.getText().toString(),
-          password.getText().toString());
+        UsedServersUtil
+          .saveNewServer(getActivity(), serverURL.getText().toString(), displayName.getText().toString(), userName.getText().toString(), password.getText().toString());
         Toast.makeText(getActivity(), getString(R.string.theServerIsSuccessfullySaved), Toast.LENGTH_SHORT).show();
         viewPager.getAdapter().notifyDataSetChanged();
         ((hu.balazsbakai.sq.MainActivity) getActivity()).goHomeScreen(this);
@@ -161,7 +159,7 @@ public class FragmentAddNewServer extends Fragment implements OnClickListener {
         userName.setText("");
         password.setText("");
       } catch (Exception e) {
-        e.printStackTrace();
+        LogUtil.e("addNewServer", e);
       }
     }
   }

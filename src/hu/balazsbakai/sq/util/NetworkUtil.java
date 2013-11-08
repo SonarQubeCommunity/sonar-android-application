@@ -63,7 +63,7 @@ public class NetworkUtil {
           responseMessage.obj = readData(server, type);
           handler.sendMessage(responseMessage);
         } catch (Exception e) {
-          e.printStackTrace();
+          LogUtil.e("startWorkingThread", e);
         }
       }
     };
@@ -87,7 +87,6 @@ public class NetworkUtil {
 
     } catch (Exception e) {
       LogUtil.e("readDataException", e);
-      e.printStackTrace();
       return null;
     }
   }

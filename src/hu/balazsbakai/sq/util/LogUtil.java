@@ -22,6 +22,9 @@ package hu.balazsbakai.sq.util;
 
 import android.util.Log;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 public class LogUtil {
 
   private static final boolean LOGGING_ENABLED = true; // false to disable logging
@@ -53,7 +56,10 @@ public class LogUtil {
   public static void e(String message, Exception e) {
     if (LOGGING_ENABLED) {
       Log.e("EXCEPTION", new StringBuilder(message).append(": ").append(e.getMessage()).toString().toString());
-      e.printStackTrace();
+
+      StringWriter stack = new StringWriter();
+      e.printStackTrace(new PrintWriter(stack));
+      Log.e("StackTrace", stack.toString());
     }
   }
 

@@ -84,21 +84,22 @@ public class RestUtil {
 
   public void executeGET() throws Exception {
 
-    String queryStringParams = "";
+    StringBuilder queryStringParams = new StringBuilder("");
 
     if (!parameters.isEmpty()) {
-      queryStringParams += "?";
+      queryStringParams.append("?");
       for (NameValuePair p : parameters) {
         String paramString = p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
         if (queryStringParams.length() > 1) {
-          queryStringParams += "&" + paramString;
+          queryStringParams.append("&").append(paramString);
         } else {
-          queryStringParams += paramString;
+
+          queryStringParams.append(paramString);
         }
       }
     }
 
-    HttpGet request = new HttpGet(url + queryStringParams);
+    HttpGet request = new HttpGet(url + queryStringParams.toString());
 
     for (NameValuePair h : headers) {
       request.addHeader(h.getName(), h.getValue());
@@ -129,7 +130,6 @@ public class RestUtil {
     } catch (Exception e) {
       LogUtil.e("executeRequest", e);
       client.getConnectionManager().shutdown();
-      e.printStackTrace();
     }
 
   }
@@ -168,7 +168,6 @@ public class RestUtil {
       return CharStreams.toString(new InputStreamReader(is, "UTF-8"));
     } catch (Exception e) {
       LogUtil.e("convertStreamToString", e);
-      e.printStackTrace();
     }
     return "";
 

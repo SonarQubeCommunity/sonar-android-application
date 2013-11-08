@@ -20,6 +20,8 @@
 
 package hu.balazsbakai.sq.pojo;
 
+import hu.balazsbakai.sq.util.LogUtil;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,11 +53,15 @@ public class UsedServers implements Serializable {
   }
 
   public Server getLastUsedServer() {
-    try {
-      return servers.get(servers.indexOf(new Server(lastUsedDisplayName)));
-    } catch (Exception e) {
+    int index = servers.indexOf(new Server(lastUsedDisplayName));
+    LogUtil.d("getLastUsedServer index", String.valueOf(index));
+
+    if (index == -1) {
       return null;
+    } else {
+      return servers.get(index);
     }
+
   }
 
 }

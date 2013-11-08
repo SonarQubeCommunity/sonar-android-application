@@ -79,6 +79,7 @@ public class MainActivity extends ActionBarActivity {
     initNavigationDrawer();
 
     RatingUtil.applicationLaunched(this);
+
   }
 
   private void initActionBar() {

@@ -20,6 +20,8 @@
 
 package hu.balazsbakai.sq.ui.fragments;
 
+import hu.balazsbakai.sq.util.LogUtil;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -130,7 +132,7 @@ public class FragmentAddPublicServers extends Fragment implements OnClickListene
         try {
           UsedServersUtil.saveNewServer(getActivity(), sqs.getServerURL(), sqs.getDisplayName(), "", "");
         } catch (Exception e) {
-          e.printStackTrace();
+          LogUtil.e("AddPublicServers", e);
         }
       }
     }

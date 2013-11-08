@@ -51,7 +51,7 @@ public class CommonUtil {
       outputDate = df_output.format(parsed);
 
     } catch (ParseException e) {
-      e.printStackTrace();
+      LogUtil.e("ParseException", e);
     }
 
     return outputDate;
