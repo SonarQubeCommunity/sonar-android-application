@@ -37,8 +37,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import hu.balazsbakai.sq.R;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 
 public class FragmentDonation extends Fragment implements OnClickListener {
 
@@ -99,7 +99,7 @@ public class FragmentDonation extends Fragment implements OnClickListener {
 
   @Override
   public void onClick(View v) {
-    GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.DONATION_DONATE);
+    UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.DONATION_DONATE);
     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PAYPAL_LINK)));
   }
 

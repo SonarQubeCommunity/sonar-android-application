@@ -28,8 +28,8 @@ import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.Button;
 import hu.balazsbakai.sq.R;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 import hu.balazsbakai.sq.util.RatingUtil;
 
 public class FragmentRating extends DialogFragment implements View.OnClickListener {
@@ -59,15 +59,15 @@ public class FragmentRating extends DialogFragment implements View.OnClickListen
   @Override
   public void onClick(View v) {
     if (v.getTag().equals("RATE")) {
-      GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.RATING_RATE);
-      startActivity(new Intent(Intent.ACTION_VIEW, RatingUtil.getRatingURI()));
+      UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.RATING_RATE);
+      startActivity(new Intent(Intent.ACTION_VIEW, RatingUtil.getInstance().getRatingURI()));
       dismiss();
     } else if (v.getTag().equals("REMINDMELATER")) {
-      GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.RATING_REMIND_ME_LATER);
+      UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.RATING_REMIND_ME_LATER);
       dismiss();
     } else {
-      GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.RATING_NO_THANKS);
-      RatingUtil.disableRatingDialog(getActivity());
+      UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.RATING_NO_THANKS);
+      RatingUtil.getInstance().disableRatingDialog(getActivity());
       dismiss();
     }
   }

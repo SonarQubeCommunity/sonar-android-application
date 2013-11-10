@@ -33,6 +33,9 @@ public class UsedServersUtil {
   private static final String PREF_NAME = "SONARQUBE_SERVER_PREFERENCES";
   private static final String USED_SERVERS = "USED_SERVERS";
 
+  private UsedServersUtil() {
+  }
+
   private static UsedServers usedServers;
 
   public static UsedServers getUsedServers(Activity activity) {

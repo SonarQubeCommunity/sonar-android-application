@@ -33,12 +33,24 @@ public class CommonUtil {
   private static final String INPUT_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
   private static final String OUTPUT_DATE_FORMAT = "yyyy-MM-dd hh:ss";
 
-  public static void hideKeyBoard(Activity activity) {
+  private static CommonUtil instance = null;
+
+  protected CommonUtil() {
+  }
+
+  public static CommonUtil getInstance() {
+    if (instance == null) {
+      instance = new CommonUtil();
+    }
+    return instance;
+  }
+
+  public void hideKeyBoard(Activity activity) {
     InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
     inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
   }
 
-  public static String formateDateFromstring(String inputDate) {
+  public String formateDateFromstring(String inputDate) {
 
     Date parsed = null;
     String outputDate = "";

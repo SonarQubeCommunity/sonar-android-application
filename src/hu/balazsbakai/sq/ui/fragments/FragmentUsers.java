@@ -54,12 +54,12 @@ public class FragmentUsers extends PagerFragment {
 
   @Override
   protected boolean getData() {
-    return NetworkUtil.checkConnectionAndGetData(handler, getActivity(), sonarQubeServer, NetworkUtil.SERVER_USERS);
+    return NetworkUtil.getInstance().checkConnectionAndGetData(handler, getActivity(), sonarQubeServer, NetworkUtil.SERVER_USERS);
   }
 
   @Override
   protected List processJsonData(String data) {
-    return JsonUtil.processUsersData(data);
+    return JsonUtil.getInstance().processUsersData(data);
   }
 
   @Override

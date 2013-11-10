@@ -32,8 +32,8 @@ import android.widget.TextView;
 import com.google.common.base.Strings;
 import hu.balazsbakai.sq.R;
 import hu.balazsbakai.sq.pojo.User;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 
 import java.util.List;
 
@@ -97,7 +97,7 @@ public class UsersAdapter extends BaseAdapter {
       mHolder.userEmail.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          GoogleAnalyticsTracker.trackUIEvent((Activity) mContext, EventLabel.USERS_ADAPTER_EMAIL);
+          UsageTracker.getInstance().trackUIEvent((Activity) mContext, EventLabel.USERS_ADAPTER_EMAIL);
           mContext.startActivity(new Intent(Intent.ACTION_SEND).setType("message/rfc822").putExtra(Intent.EXTRA_EMAIL,
             new String[] {sonarQubeUsers.get(position).getEmail()}));
 

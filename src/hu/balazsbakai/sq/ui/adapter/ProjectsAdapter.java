@@ -36,8 +36,8 @@ import hu.balazsbakai.sq.R;
 import hu.balazsbakai.sq.pojo.Project;
 import hu.balazsbakai.sq.pojo.Server;
 import hu.balazsbakai.sq.util.CommonUtil;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 
 import java.util.List;
 
@@ -106,14 +106,14 @@ public class ProjectsAdapter extends BaseAdapter {
     mHolder.projectLanguage.setText(sonarQubeProjects.get(position).getLang());
 
     mHolder.projectDate = (TextView) convertView.findViewById(R.id.projectDate);
-    mHolder.projectDate.setText(CommonUtil.formateDateFromstring(sonarQubeProjects.get(position).getDate()));
+    mHolder.projectDate.setText(CommonUtil.getInstance().formateDateFromstring(sonarQubeProjects.get(position).getDate()));
 
     mHolder.web = (ImageView) convertView.findViewById(R.id.imageViewWeb);
     mHolder.web.setTag(position);
     mHolder.web.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        GoogleAnalyticsTracker.trackUIEvent((Activity) mContext, EventLabel.PROJECTS_ADAPTER_WEB);
+        UsageTracker.getInstance().trackUIEvent((Activity) mContext, EventLabel.PROJECTS_ADAPTER_WEB);
         mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(sonarQubeServer.getServerURL() + PROJECT_URL_PART + sonarQubeProjects.get(position).getId())));
       }
     });

@@ -39,7 +39,19 @@ public class RatingUtil {
   private static final String APPLICATION_LAUNCH_COUNT = "APPLICATION_LAUNCH_COUNT";
   private static final String APPLICATION_FIRST_LAUNCH_TIME = "APPLICATION_FIRST_LAUNCH_TIME";
 
-  public static void applicationLaunched(Context mContext) {
+  private static RatingUtil instance = null;
+
+  protected RatingUtil() {
+  }
+
+  public static RatingUtil getInstance() {
+    if (instance == null) {
+      instance = new RatingUtil();
+    }
+    return instance;
+  }
+
+  public void applicationLaunched(Context mContext) {
     if (isDisabledRatingDialog(mContext)) {
       return;
     }
@@ -51,26 +63,26 @@ public class RatingUtil {
     }
   }
 
-  public static void disableRatingDialog(Context mContext) {
+  public void disableRatingDialog(Context mContext) {
     SharedPreferences prefs = mContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = prefs.edit();
     editor.putBoolean(DISABLED_RATING_DIALOG, true);
     editor.commit();
   }
 
-  public static Uri getRatingURI() {
+  public Uri getRatingURI() {
     return Uri.parse(RatingUtil.MARKET_PREFIX + RatingUtil.APP_PACKAGE_NAME);
   }
 
-  private static boolean isSuitableApplicationLaunchCount(Context mContext) {
+  private boolean isSuitableApplicationLaunchCount(Context mContext) {
     return getApplicationLaunchCounter(mContext) >= LAUNCH_COUNT_WHEN_PROMPT;
   }
 
-  private static boolean isSuitableElapsedDays(Context mContext) {
+  private boolean isSuitableElapsedDays(Context mContext) {
     return System.currentTimeMillis() >= getFirstApplicationLaunchTime(mContext) + (DAYS_UNTIL_PROMPT * 24 * 60 * 60 * 1000);
   }
 
-  private static long getFirstApplicationLaunchTime(Context mContext) {
+  private long getFirstApplicationLaunchTime(Context mContext) {
     SharedPreferences prefs = mContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
     long firstLaunchTime = prefs.getLong(APPLICATION_FIRST_LAUNCH_TIME, 0);
@@ -84,19 +96,19 @@ public class RatingUtil {
     return firstLaunchTime;
   }
 
-  private static long getApplicationLaunchCounter(Context context) {
+  private long getApplicationLaunchCounter(Context context) {
     SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     return prefs.getLong(APPLICATION_LAUNCH_COUNT, 0);
   }
 
-  private static void incrementApplicationLaunchCounter(Context context) {
+  private void incrementApplicationLaunchCounter(Context context) {
     SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = prefs.edit();
     editor.putLong(APPLICATION_LAUNCH_COUNT, getApplicationLaunchCounter(context) + 1);
     editor.commit();
   }
 
-  private static boolean isDisabledRatingDialog(Context context) {
+  private boolean isDisabledRatingDialog(Context context) {
     SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     return prefs.getBoolean(DISABLED_RATING_DIALOG, false);
   }

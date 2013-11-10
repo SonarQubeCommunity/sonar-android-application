@@ -36,8 +36,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import hu.balazsbakai.sq.R;
 import hu.balazsbakai.sq.ui.adapter.ListServerAdapter;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 import hu.balazsbakai.sq.util.UsedServersUtil;
 
 public class FragmentListServers extends Fragment implements OnClickListener {
@@ -111,7 +111,7 @@ public class FragmentListServers extends Fragment implements OnClickListener {
   }
 
   private void select(String displayName) {
-    GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.LIST_SERVER_SELECT);
+    UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.LIST_SERVER_SELECT);
 
     UsedServersUtil.updateLastUsedDisplayName(getActivity(), displayName);
     viewPager.getAdapter().notifyDataSetChanged();
@@ -119,7 +119,7 @@ public class FragmentListServers extends Fragment implements OnClickListener {
   }
 
   private void delete(String displayName) {
-    GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.LIST_SERVER_DELETE);
+    UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.LIST_SERVER_DELETE);
 
     UsedServersUtil.deleteServer(getActivity(), displayName);
 

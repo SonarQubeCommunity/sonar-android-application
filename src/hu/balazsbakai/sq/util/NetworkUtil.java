@@ -38,7 +38,20 @@ public class NetworkUtil {
   public static final String SERVER_PLUGINS = "/api/updatecenter/installed_plugins";
   public static final String PROJECT_METRICS = "/api/metrics";
 
-  public static boolean checkConnectionAndGetData(Handler handler, Context context, Server server, String type) {
+  private static NetworkUtil instance = null;
+
+  protected NetworkUtil() {
+
+  }
+
+  public static NetworkUtil getInstance() {
+    if (instance == null) {
+      instance = new NetworkUtil();
+    }
+    return instance;
+  }
+
+  public boolean checkConnectionAndGetData(Handler handler, Context context, Server server, String type) {
     LogUtil.d("NetworkUtil", "checkConnectionAndGetData");
 
     if (isOnline(context)) {
@@ -49,7 +62,7 @@ public class NetworkUtil {
     }
   }
 
-  private static void startWorkingThread(final Handler handler, final Server server, final String type) {
+  private void startWorkingThread(final Handler handler, final Server server, final String type) {
     LogUtil.d("NetworkUtil", "startWorkingThread");
 
     Thread thread = new Thread() {
@@ -70,7 +83,7 @@ public class NetworkUtil {
     thread.start();
   }
 
-  private static String readData(Server server, String url) {
+  private String readData(Server server, String url) {
     LogUtil.d("NetworkUtil", "readData");
 
     try {
@@ -91,7 +104,7 @@ public class NetworkUtil {
     }
   }
 
-  private static boolean isOnline(Context context) {
+  private boolean isOnline(Context context) {
     ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     NetworkInfo netInfo = cm.getActiveNetworkInfo();
     if (netInfo != null && netInfo.isConnectedOrConnecting()) {

@@ -43,8 +43,8 @@ import hu.balazsbakai.sq.R;
 import hu.balazsbakai.sq.pojo.Server;
 import hu.balazsbakai.sq.pojo.ServerStatus;
 import hu.balazsbakai.sq.util.CommonUtil;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 import hu.balazsbakai.sq.util.JsonUtil;
 import hu.balazsbakai.sq.util.LogUtil;
 import hu.balazsbakai.sq.util.NetworkUtil;
@@ -145,9 +145,9 @@ public class FragmentAddNewServer extends Fragment implements OnClickListener {
   private void addNewServer() {
     if (isValidForm()) {
 
-      GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.ADD_NEW_SERVER_SAVE);
+      UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.ADD_NEW_SERVER_SAVE);
 
-      CommonUtil.hideKeyBoard(getActivity());
+      CommonUtil.getInstance().hideKeyBoard(getActivity());
       try {
         UsedServersUtil
           .saveNewServer(getActivity(), serverURL.getText().toString(), displayName.getText().toString(), userName.getText().toString(), password.getText().toString());
@@ -204,7 +204,7 @@ public class FragmentAddNewServer extends Fragment implements OnClickListener {
     @Override
     public void handleMessage(Message msg) {
       if (msg.obj != null) {
-        ServerStatus ss = JsonUtil.processServerStatusData(msg.obj.toString());
+        ServerStatus ss = JsonUtil.getInstance().processServerStatusData(msg.obj.toString());
         LogUtil.i("Server status", ss.toString());
         buttonTestConnection.setBackgroundColor(getResources().getColor(R.color.button_green));
       } else {
@@ -217,9 +217,9 @@ public class FragmentAddNewServer extends Fragment implements OnClickListener {
 
     if (isValidForm()) {
 
-      GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.ADD_NEW_SERVER_TEST_CONNECTION);
+      UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.ADD_NEW_SERVER_TEST_CONNECTION);
 
-      boolean isConnected = NetworkUtil.checkConnectionAndGetData(handler, getActivity(), new Server().withDisplayName(displayName.getText().toString())
+      boolean isConnected = NetworkUtil.getInstance().checkConnectionAndGetData(handler, getActivity(), new Server().withDisplayName(displayName.getText().toString())
         .withserverURL(serverURL.getText().toString()).withUsernameAndPassword(userName.getText().toString(), password.getText().toString()),
         NetworkUtil.SERVER_STATUS);
 

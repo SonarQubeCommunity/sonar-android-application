@@ -25,7 +25,19 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 
-public class GoogleAnalyticsTracker {
+public class UsageTracker {
+
+  private static UsageTracker instance = null;
+
+  protected UsageTracker() {
+  }
+
+  public static UsageTracker getInstance() {
+    if (instance == null) {
+      instance = new UsageTracker();
+    }
+    return instance;
+  }
 
   public enum EventCategory {
     UI_EVENT;
@@ -62,22 +74,22 @@ public class GoogleAnalyticsTracker {
   /**
    * Add the send methods to the onStart() and onStop() methods of each of your Activities
    */
-  public static void startTracking(Activity activity) {
+  public void startTracking(Activity activity) {
     EasyTracker.getInstance(activity).activityStart(activity);
   }
 
   /**
    * Add the send methods to the onStart() and onStop() methods of each of your Activities
    */
-  public static void stopTracking(Activity activity) {
+  public void stopTracking(Activity activity) {
     EasyTracker.getInstance(activity).activityStop(activity);
   }
 
-  public static void trackScreen(Activity activity, ScreenName screenName) {
+  public void trackScreen(Activity activity, ScreenName screenName) {
     EasyTracker.getInstance(activity).send(MapBuilder.createAppView().set(Fields.SCREEN_NAME, screenName.name()).build());
   }
 
-  public static void trackUIEvent(Activity activity, EventLabel eventLabel) {
+  public void trackUIEvent(Activity activity, EventLabel eventLabel) {
     EasyTracker.getInstance(activity).send(MapBuilder.createEvent(EventCategory.UI_EVENT.name(), EventAction.BUTTON_PRESS.name(), eventLabel.name(), null).build());
   }
 

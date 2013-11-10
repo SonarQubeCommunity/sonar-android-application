@@ -47,8 +47,8 @@ import hu.balazsbakai.sq.ui.fragments.FragmentAddPublicServers;
 import hu.balazsbakai.sq.ui.fragments.FragmentDonation;
 import hu.balazsbakai.sq.ui.fragments.FragmentListServers;
 import hu.balazsbakai.sq.ui.fragments.FragmentRating;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.ScreenName;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.ScreenName;
 import hu.balazsbakai.sq.util.LogUtil;
 import hu.balazsbakai.sq.util.RatingUtil;
 import hu.balazsbakai.sq.util.UsedServersUtil;
@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
     initActionBar();
     initNavigationDrawer();
 
-    RatingUtil.applicationLaunched(this);
+    RatingUtil.getInstance().applicationLaunched(this);
 
   }
 
@@ -186,27 +186,27 @@ public class MainActivity extends ActionBarActivity {
       final String title = mAdapter.getItem(position).title; // chooser
 
       if (title.equals(getString(R.string.addNewServer))) {
-        GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.ADD_NEW_SERVER);
+        UsageTracker.getInstance().trackScreen(MainActivity.this, ScreenName.ADD_NEW_SERVER);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentAddNewServer()).commit();
 
       } else if (title.equals(getString(R.string.listServers))) {
-        GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.LIST_SERVERS);
+        UsageTracker.getInstance().trackScreen(MainActivity.this, ScreenName.LIST_SERVERS);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentListServers()).commit();
 
       } else if (title.equals(getString(R.string.addPublicServers))) {
-        GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.ADD_PUBLIC_SERVERS);
+        UsageTracker.getInstance().trackScreen(MainActivity.this, ScreenName.ADD_PUBLIC_SERVERS);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentAddPublicServers()).commit();
 
       } else if (title.equals(getString(R.string.donation))) {
-        GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.DONATION);
+        UsageTracker.getInstance().trackScreen(MainActivity.this, ScreenName.DONATION);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentDonation()).commit();
 
       } else if (title.equals(getString(R.string.rating))) {
-        GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.RATING);
+        UsageTracker.getInstance().trackScreen(MainActivity.this, ScreenName.RATING);
         new FragmentRating().show(getSupportFragmentManager(), "");
 
       } else if (title.equals(getString(R.string.sharing))) {
-        GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.SHARING);
+        UsageTracker.getInstance().trackScreen(MainActivity.this, ScreenName.SHARING);
         sharingApplication();
       }
     }
@@ -264,14 +264,14 @@ public class MainActivity extends ActionBarActivity {
     super.onStart();
     LogUtil.d("MainActivity", "onStart");
 
-    GoogleAnalyticsTracker.startTracking(this);
+    UsageTracker.getInstance().startTracking(this);
   }
 
   @Override
   public void onStop() {
     super.onStop();
     LogUtil.d("MainActivity", "onStop");
-    GoogleAnalyticsTracker.stopTracking(this);
+    UsageTracker.getInstance().stopTracking(this);
   }
 
   @Override

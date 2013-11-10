@@ -34,7 +34,19 @@ import java.util.List;
 
 public class JsonUtil {
 
-  public static ServerStatus processServerStatusData(String data) {
+  private static JsonUtil instance = null;
+
+  protected JsonUtil() {
+  }
+
+  public static JsonUtil getInstance() {
+    if (instance == null) {
+      instance = new JsonUtil();
+    }
+    return instance;
+  }
+
+  public ServerStatus processServerStatusData(String data) {
     LogUtil.d("JsonUtil", "processServerStatusData");
 
     ServerStatus ss = new ServerStatus();
@@ -56,7 +68,7 @@ public class JsonUtil {
     return ss;
   }
 
-  public static List<Project> processProjectsData(String data) {
+  public List<Project> processProjectsData(String data) {
     LogUtil.d("JsonUtil", "processProjectsData");
 
     List<Project> sqps = new ArrayList<Project>();
@@ -96,7 +108,7 @@ public class JsonUtil {
     return sqps;
   }
 
-  public static List<User> processUsersData(String data) {
+  public List<User> processUsersData(String data) {
     LogUtil.d("JsonUtil", "processUsersData");
 
     List<User> us = new ArrayList<User>();
@@ -130,7 +142,7 @@ public class JsonUtil {
     return us;
   }
 
-  public static List<Plugin> processPluinData(String data) {
+  public List<Plugin> processPluinData(String data) {
     LogUtil.d("JsonUtil", "processPluinData");
 
     List<Plugin> sqps = new ArrayList<Plugin>();

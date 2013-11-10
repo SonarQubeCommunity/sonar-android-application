@@ -39,8 +39,8 @@ import android.widget.TextView;
 import hu.balazsbakai.sq.R;
 import hu.balazsbakai.sq.pojo.Server;
 import hu.balazsbakai.sq.ui.adapter.AddPublicServersAdapter;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 import hu.balazsbakai.sq.util.LogUtil;
 import hu.balazsbakai.sq.util.UsedServersUtil;
 
@@ -121,7 +121,7 @@ public class FragmentAddPublicServers extends Fragment implements OnClickListene
 
   private void addPublicServers() {
 
-    GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.ADD_PUBLIC_SERVERS_ADD);
+    UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.ADD_PUBLIC_SERVERS_ADD);
 
     List<Server> storedServers = UsedServersUtil.getUsedServers(getActivity()).getServers();
     for (int i = 0; i < listView.getAdapter().getCount(); i++) {

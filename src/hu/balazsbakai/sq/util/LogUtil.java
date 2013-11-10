@@ -24,6 +24,10 @@ import android.util.Log;
 
 public class LogUtil {
 
+  private LogUtil() {
+
+  }
+
   private static final boolean LOGGING_ENABLED = true; // false to disable logging
 
   public static void i(String tag, String message) {

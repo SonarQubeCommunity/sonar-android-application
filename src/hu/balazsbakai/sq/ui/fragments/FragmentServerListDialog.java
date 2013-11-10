@@ -30,8 +30,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 import hu.balazsbakai.sq.R;
 import hu.balazsbakai.sq.pojo.Server;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
-import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.UsageTracker;
+import hu.balazsbakai.sq.util.UsageTracker.EventLabel;
 import hu.balazsbakai.sq.util.UsedServersUtil;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class FragmentServerListDialog extends DialogFragment {
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-    GoogleAnalyticsTracker.trackUIEvent(getActivity(), EventLabel.SERVER_LIST_DIALOG);
+    UsageTracker.getInstance().trackUIEvent(getActivity(), EventLabel.SERVER_LIST_DIALOG);
 
     final List<String> displayNames = new ArrayList<String>();
 
