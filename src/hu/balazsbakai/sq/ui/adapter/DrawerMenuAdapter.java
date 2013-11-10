@@ -74,8 +74,9 @@ public class DrawerMenuAdapter extends ArrayAdapter<DrawerMenuItemModel> {
 
     if (view == null) {
       int layout = R.layout.drawer_item;
-      if (item.isHeader)
+      if (item.isHeader){
         layout = R.layout.drawer_header;
+      }
 
       view = LayoutInflater.from(getContext()).inflate(layout, null);
 
@@ -91,8 +92,9 @@ public class DrawerMenuAdapter extends ArrayAdapter<DrawerMenuItemModel> {
     }
 
     if (item != null && holder != null) {
-      if (holder.textHolder != null)
+      if (holder.textHolder != null){
         holder.textHolder.setText(item.title);
+      }
     }
 
     return view;

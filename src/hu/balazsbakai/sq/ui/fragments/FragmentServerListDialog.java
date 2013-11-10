@@ -56,8 +56,9 @@ public class FragmentServerListDialog extends DialogFragment {
 
     final List<String> displayNames = new ArrayList<String>();
 
-    for (Server item : UsedServersUtil.getUsedServers(getActivity()).getServers())
+    for (Server item : UsedServersUtil.getUsedServers(getActivity()).getServers()){
       displayNames.add(item.getDisplayName());
+    }
 
     final CharSequence[] charSequenceItems = displayNames.toArray(new CharSequence[displayNames.size()]);
 

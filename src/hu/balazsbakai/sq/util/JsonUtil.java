@@ -54,14 +54,17 @@ public class JsonUtil {
     try {
       JSONObject jss = new JSONObject(data);
 
-      if (!jss.isNull(Tag.ID.getValue()))
+      if (!jss.isNull(Tag.ID.getValue())){
         ss.setId(jss.getString(Tag.ID.getValue()));
+      }
 
-      if (!jss.isNull(Tag.VERSION.getValue()))
+      if (!jss.isNull(Tag.VERSION.getValue())){
         ss.setVersion(jss.getString(Tag.VERSION.getValue()));
+      }
 
-      if (!jss.isNull(Tag.STATUS.getValue()))
+      if (!jss.isNull(Tag.STATUS.getValue())){
         ss.setStatus(jss.getString(Tag.STATUS.getValue()));
+      }
     } catch (JSONException e) {
       LogUtil.e("JSONException", e);
     }
@@ -81,23 +84,29 @@ public class JsonUtil {
         Project sqp = new Project();
         JSONObject project = projects.getJSONObject(i);
 
-        if (!project.isNull(Tag.ID.getValue()))
+        if (!project.isNull(Tag.ID.getValue())){
           sqp.setId(project.getString(Tag.ID.getValue()));
+        }
 
-        if (!project.isNull(Tag.KEY.getValue()))
+        if (!project.isNull(Tag.KEY.getValue())){
           sqp.setKey(project.getString(Tag.KEY.getValue()));
+        }
 
-        if (!project.isNull(Tag.NAME.getValue()))
+        if (!project.isNull(Tag.NAME.getValue())){
           sqp.setName(project.getString(Tag.NAME.getValue()));
+        }
 
-        if (!project.isNull(Tag.LANG.getValue()))
+        if (!project.isNull(Tag.LANG.getValue())){
           sqp.setLang(project.getString(Tag.LANG.getValue()));
+        }
 
-        if (!project.isNull(Tag.VERSION.getValue()))
+        if (!project.isNull(Tag.VERSION.getValue())){
           sqp.setVersion(project.getString(Tag.VERSION.getValue()));
+        }
 
-        if (!project.isNull(Tag.DATE.getValue()))
+        if (!project.isNull(Tag.DATE.getValue())){
           sqp.setDate(project.getString(Tag.DATE.getValue()));
+        }
 
         sqps.add(sqp);
       }
@@ -122,17 +131,21 @@ public class JsonUtil {
         User u = new User();
         JSONObject user = users.getJSONObject(i);
 
-        if (!user.isNull(Tag.LOGIN.getValue()))
+        if (!user.isNull(Tag.LOGIN.getValue())){
           u.setLogin(user.getString(Tag.LOGIN.getValue()));
+        }
 
-        if (!user.isNull(Tag.ACTIVE.getValue()))
+        if (!user.isNull(Tag.ACTIVE.getValue())){
           u.setActive(user.getString(Tag.ACTIVE.getValue()));
+        }
 
-        if (!user.isNull(Tag.NAME.getValue()))
+        if (!user.isNull(Tag.NAME.getValue())){
           u.setName(user.getString(Tag.NAME.getValue()));
+        }
 
-        if (!user.isNull(Tag.EMAIL.getValue()))
+        if (!user.isNull(Tag.EMAIL.getValue())){
           u.setEmail(user.getString(Tag.EMAIL.getValue()));
+        }
 
         us.add(u);
       }
@@ -155,14 +168,17 @@ public class JsonUtil {
         Plugin sqp = new Plugin();
         JSONObject project = plugins.getJSONObject(i);
 
-        if (!project.isNull(Tag.KEY.getValue()))
+        if (!project.isNull(Tag.KEY.getValue())){
           sqp.setKey(project.getString(Tag.KEY.getValue()));
+        }
 
-        if (!project.isNull(Tag.NAME.getValue()))
+        if (!project.isNull(Tag.NAME.getValue())){
           sqp.setName(project.getString(Tag.NAME.getValue()));
+        }
 
-        if (!project.isNull(Tag.VERSION.getValue()))
+        if (!project.isNull(Tag.VERSION.getValue())){
           sqp.setVersion(project.getString(Tag.VERSION.getValue()));
+        }
 
         sqps.add(sqp);
       }

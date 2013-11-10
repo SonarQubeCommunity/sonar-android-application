@@ -104,25 +104,9 @@ public class FragmentProjectDetails extends Fragment {
     viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
     viewPager.setVisibility(View.INVISIBLE);
 
-    readProjectMetrics();
-  }
-
-  @Override
-  public void onStop() {
-
-    super.onStop();
 
   }
 
-  @Override
-  public void onDestroy() {
 
-    super.onDestroy();
-
-  }
-
-  private void readProjectMetrics() {
-
-  }
 
 }
