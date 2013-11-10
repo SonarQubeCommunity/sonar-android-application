@@ -39,17 +39,16 @@ import java.util.ArrayList;
 public class AddPublicServersAdapter extends BaseAdapter {
   private LayoutInflater mInflater = null;
   private ArrayList<Server> sonarQubeServers;
-  private Context mContext;
 
   private final class AutoPopulateViewHolder {
-    TextView serverURL;
-    CheckBox checkBox;
+    private TextView serverURL;
+    private CheckBox checkBox;
   }
 
   private AutoPopulateViewHolder mHolder = null;
 
   public AddPublicServersAdapter(Context context) {
-    mContext = context;
+    Context mContext = context;
     mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     sonarQubeServers = new ArrayList<Server>(); // http://www.sonarqube.org/resources/public-sonarqube-instances/

@@ -56,11 +56,7 @@ import hu.balazsbakai.sq.util.UsedServersUtil;
 public class MainActivity extends ActionBarActivity {
 
   private static final String GOOGLEPLAY_LINK = "https://play.google.com/store/apps/details?id=hu.balazsbakai.sq";
-
-  private MenuItem searchItem;
-  private PagerAdapter pagerAdapter;
   private ViewPager viewPager;
-  private ActionBarTabListener actionBarTabListener;
   private TextView actionBarTitleTextView;
 
   private DrawerLayout mLayout;
@@ -84,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
 
   private void initActionBar() {
     actionBar = getSupportActionBar();
-    pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+    final PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
     viewPager = (ViewPager) findViewById(R.id.viewpager);
 
     viewPager.setAdapter(pagerAdapter);
@@ -96,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
     });
     actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     actionBar.setLogo(R.drawable.logo); // A2.2
-    actionBarTabListener = new ActionBarTabListener(viewPager);
+    final ActionBarTabListener actionBarTabListener = new ActionBarTabListener(viewPager);
     // actionBar.addTab(actionBar.newTab().setText(getString(R.string.favourites)).setTabListener(actionBarTabListener));
     actionBar.addTab(actionBar.newTab().setText(getString(R.string.projects)).setTabListener(actionBarTabListener));
     actionBar.addTab(actionBar.newTab().setText(getString(R.string.users)).setTabListener(actionBarTabListener));
@@ -164,7 +160,7 @@ public class MainActivity extends ActionBarActivity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.activity_main_actions, menu);
-    searchItem = menu.findItem(R.id.action_search);
+    final MenuItem searchItem = menu.findItem(R.id.action_search);
     searchItem.setVisible(false);
     // SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
     return true;
@@ -187,29 +183,29 @@ public class MainActivity extends ActionBarActivity {
       mList.setItemChecked(position, true); // Highlight the selected item,
       actionBar.setTitle(mAdapter.getItem(position).title); // update the title
       mLayout.closeDrawer(mList); // And close the drawer
-      String title = mAdapter.getItem(position).title; // chooser
+      final String title = mAdapter.getItem(position).title; // chooser
 
       if (title.equals(getString(R.string.addNewServer))) {
         GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.ADD_NEW_SERVER);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentAddNewServer()).commit();
-      }
-      else if (title.equals(getString(R.string.listServers))) {
+
+      } else if (title.equals(getString(R.string.listServers))) {
         GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.LIST_SERVERS);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentListServers()).commit();
-      }
-      else if (title.equals(getString(R.string.addPublicServers))) {
+
+      } else if (title.equals(getString(R.string.addPublicServers))) {
         GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.ADD_PUBLIC_SERVERS);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentAddPublicServers()).commit();
-      }
-      else if (title.equals(getString(R.string.donation))) {
+
+      } else if (title.equals(getString(R.string.donation))) {
         GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.DONATION);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentDonation()).commit();
-      }
-      else if (title.equals(getString(R.string.rating))) {
+
+      } else if (title.equals(getString(R.string.rating))) {
         GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.RATING);
         new FragmentRating().show(getSupportFragmentManager(), "");
-      }
-      else if (title.equals(getString(R.string.sharing))) {
+
+      } else if (title.equals(getString(R.string.sharing))) {
         GoogleAnalyticsTracker.trackScreen(MainActivity.this, ScreenName.SHARING);
         sharingApplication();
       }
@@ -223,12 +219,13 @@ public class MainActivity extends ActionBarActivity {
   }
 
   private void refreshDisplayName() {
-    UsedServers sqdo = UsedServersUtil.getUsedServers(this);
+    final UsedServers sqdo = UsedServersUtil.getUsedServers(this);
 
-    if (!Strings.isNullOrEmpty(sqdo.getLastUsedDisplayName())) {
-      actionBarTitleTextView.setText(sqdo.getLastUsedDisplayName());
-    } else {
+    if (Strings.isNullOrEmpty(sqdo.getLastUsedDisplayName())) {
       actionBarTitleTextView.setText(getString(R.string.app_name));
+    }
+    else {
+      actionBarTitleTextView.setText(sqdo.getLastUsedDisplayName());
     }
   }
 
@@ -236,11 +233,12 @@ public class MainActivity extends ActionBarActivity {
   public void onBackPressed() {
     LogUtil.d("MainActivity", "onBackPressed");
 
-    Fragment currentFragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
-    if (currentFragment != null) {
-      goHomeScreen(currentFragment);
-    } else {
+    final Fragment currentFragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
+    if (currentFragment == null) {
       super.onBackPressed();
+    }
+    else {
+      goHomeScreen(currentFragment);
     }
   }
 

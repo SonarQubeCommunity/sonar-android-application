@@ -20,8 +20,6 @@
 
 package hu.balazsbakai.sq.ui.fragments;
 
-import hu.balazsbakai.sq.util.LogUtil;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -43,6 +41,7 @@ import hu.balazsbakai.sq.pojo.Server;
 import hu.balazsbakai.sq.ui.adapter.AddPublicServersAdapter;
 import hu.balazsbakai.sq.util.GoogleAnalyticsTracker;
 import hu.balazsbakai.sq.util.GoogleAnalyticsTracker.EventLabel;
+import hu.balazsbakai.sq.util.LogUtil;
 import hu.balazsbakai.sq.util.UsedServersUtil;
 
 import java.util.List;

@@ -22,9 +22,6 @@ package hu.balazsbakai.sq.util;
 
 import android.util.Log;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 public class LogUtil {
 
   private static final boolean LOGGING_ENABLED = true; // false to disable logging
@@ -37,7 +34,7 @@ public class LogUtil {
 
   public static void i(String tag, String message, String parameter1) {
     if (LOGGING_ENABLED) {
-      Log.i(tag, new StringBuilder(message).append(": ").append(parameter1).toString().toString());
+      Log.i(tag, new StringBuilder(message).append(": ").append(parameter1).toString());
     }
   }
 
@@ -49,18 +46,24 @@ public class LogUtil {
 
   public static void d(String tag, String message, String parameter1) {
     if (LOGGING_ENABLED) {
-      Log.d(tag, new StringBuilder(message).append(": ").append(parameter1).toString().toString());
+      Log.d(tag, new StringBuilder(message).append(": ").append(parameter1).toString());
     }
   }
 
   public static void e(String message, Exception e) {
     if (LOGGING_ENABLED) {
-      Log.e("EXCEPTION", new StringBuilder(message).append(": ").append(e.getMessage()).toString().toString());
-
-      StringWriter stack = new StringWriter();
-      e.printStackTrace(new PrintWriter(stack));
-      Log.e("StackTrace", stack.toString());
+      Log.e(message, getStackTrace(e));
     }
   }
 
+  public static String getStackTrace(Throwable throwable) {
+    StringBuilder result = new StringBuilder(throwable.toString());
+    result.append("\n");
+
+    for (StackTraceElement element : throwable.getStackTrace()) {
+      result.append(element);
+      result.append("\n");
+    }
+    return result.toString();
+  }
 }
