@@ -1,0 +1,11 @@
+language: android
+
+android:
+  components:
+    - build-tools-20.0.0
+    - android-20
+    - extra-android-m2repository
+    - extra-android-support
+
+script:
+  ./gradlew assembleDebug
