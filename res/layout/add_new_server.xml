@@ -54,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/button_text"
-            android:onClick="addNewServer"
             android:tag="TESTCONNECTION"
             android:text="@string/testConnection"
             android:textColor="#FFFFFF"
