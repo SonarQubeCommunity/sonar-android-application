@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SonarQube</string>
+    <string name="emptyList">Die Liste ist leer</string>
+
+    <!-- tabbar -->
+    <string name="favourites">Favoriten</string>
+    <string name="projects">Projekte</string>
+    <string name="users">Benutzer</string>
+    <string name="plugins">Plugins</string>
+
+     <!-- menu -->
+    <string name="serverManagement">Server management</string>
+    <string name="addNewServer">Server hinzufügen</string>
+    <string name="listServers">Server anzeigen</string>
+    <string name="addPublicServers">Öffentl. Server hinzufügen</string>
+    <string name="extra">Extra</string>
+    <string name="sharing">Teilen</string>
+    <string name="rating">Bewerten</string>
+    <string name="donation">Spenden</string>
+
+    <string name="search">Suche</string>
+    <string name="refresh">Aktualisieren</string>
+    <string name="settings">Einstellungen</string>
+
+
+    <!-- add new server -->
+    <string name="serverURL">Server URL</string>
+    <string name="displayName">Display name</string>
+    <string name="username">Benutzername</string>
+    <string name="password">Password</string>
+    <string name="save">Speichern</string>
+    <string name="testConnection">Teste Verbindung</string>
+    <string name="serverURLIsRequired">Server URL muss vorhanden sein!</string>
+    <string name="serverMustStartsWith">Server URL muss mit http:// oder https:// starten</string>
+    <string name="serverMustNotEndsWith">Server URL darf nicht mit / enden</string>
+    <string name="displayNameIsRequired">Anzeigename muss vorhanden sein!</string>
+    <string name="displayNameMustBeLessThan">Anzeigenamen musss weniger als 18 Zeichen haben!</string>
+    <string name="displayNameMustBeUnique">Anzeigename bereits vergeben!</string>
+    <string name="theServerIsSuccessfullySaved">Der Server wurde erfolgreich gespeichert</string>
+
+    <!-- list servers -->
+    <string name="theServerIsSuccessfullyDeleted">Der Server wurde gelöscht</string>
+    <string name="select">Auswahl</string>
+    <string name="delete">Löschen</string>
+
+
+    <!-- add public servers -->
+    <string name="ThePublicServersAreSuccessfullyAdded">Der öffentl. Server wurde hinzugefügt</string>
+    <string name="add">Hinzufügen</string>
+
+    <!-- rating -->
+    <string name="ifYouEnjoy">Wenn dir die SonarQube App gefällt bewerte sie bitte.\n\nDanke!</string>
+    <string name="rateSonarQubeApp">Bewerte die App</string>
+    <string name="remindMeLater">Erinner mich später</string>
+    <string name="noThanks">Nein danke</string>
+
+    <!-- donation -->
+    <string name="donate">Spende</string>
+    <string name="pleaseSpend">Bitte spende etwas um die Entwicklung zu unterstützen.\n\nDanke!</string>
+
+    <!-- sharing -->
+    <string name="sharedText">Probiere die SonarQube App aus</string>
+
+
+   <!-- network util -->
+   <string name="loading">Lade</string>
+   <string name="pleaseWait">Bitte warten…</string>
+   <string name="networkStatus">Netwerk status</string>
+   <string name="yourDevice">Dein Gerät ist nicht mit dem Netzwerk verbunden!</string>
+   <string name="notConnectedAndTryToRefresh">Dein Gerät ist nicht mit dem Netzwerk verbunden!\nAktualisiere nachdem eine Verbindung besteht!.</string>
+
+   <!-- Layout -->
+   <string name="activeMember">Aktiv</string>
+   <string name="inactiveMember">Inaktiv</string>
+   <string name="web">Web</string>
+
+
+
+</resources>
