@@ -1,4 +1,7 @@
 # sonar-android-application #
+
+[![Build Status](https://travis-ci.org/SonarCommunity/sonar-android-application.svg?branch=master)](https://travis-ci.org/SonarCommunity/sonar-android-application)
+
 The open source SonarQube code analyzer tool for your Android device. It allows you to view server, project and analysis information.
 
 ### Documentation ###
